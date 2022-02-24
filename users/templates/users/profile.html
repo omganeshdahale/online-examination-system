@@ -10,11 +10,17 @@
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-success btn-block" type="submit">Update</button>
+                    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-save"></i> Update</button>
                 </div>
             </form>
         </div>
         <div class="card-footer">
+            {% if user.is_student %}
+                <a href="{% url 'users:student_profile' %}">Student Profile</a> | 
+            {% endif %}
+            {% if user.is_teacher %}
+                <a href="{% url 'users:teacher_profile' %}">Teacher Profile</a> | 
+            {% endif %}
             <a href="{% url 'password_reset' %}">Reset Password</a>
         </div>
     </div>
